@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *   { box-sizing:border-box; margin:0; padding:0; }
+  html{ font-family:'Inter',sans-serif; scroll-behavior:smooth; }
+  body{ background:#f0f0ff; color:#1e1b4b; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4,h5,h6{ font-weight:700; color:#1e1b4b; line-height:1.25; }
+}
+
+@layer components {
+  /* ── Buttons ─────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5
+           font-semibold text-sm text-white rounded-xl
+           bg-primary-gradient shadow-primary
+           hover:opacity-90 active:scale-[.97]
+           transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5
+           font-semibold text-sm text-indigo-700 rounded-xl
+           bg-white border border-indigo-100 shadow-card
+           hover:bg-indigo-50 hover:border-indigo-200 active:scale-[.97]
+           transition-all duration-200;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5
+           font-semibold text-sm text-white rounded-xl
+           bg-danger shadow-alert
+           hover:opacity-90 active:scale-[.97] transition-all duration-200;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2
+           font-medium text-sm text-slate-600 rounded-xl
+           hover:bg-indigo-50 hover:text-indigo-700 active:scale-[.97] transition-all duration-200;
+  }
+
+  /* ── Cards ───────────────────────────────── */
+  .card {
+    @apply bg-white rounded-2xl border border-indigo-50 shadow-card
+           hover:shadow-card-hover transition-all duration-300;
+  }
+  .card-glass {
+    @apply rounded-2xl border border-white/30 shadow-card
+           transition-all duration-300;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(16px);
+  }
+
+  /* ── Form ────────────────────────────────── */
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-white border border-indigo-100 rounded-xl
+           text-sm text-slate-900 placeholder-slate-400
+           focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary
+           transition-all duration-200;
+  }
+  .label { @apply block text-sm font-semibold text-slate-700 mb-1.5; }
+
+  /* ── Badges ──────────────────────────────── */
+  .badge        { @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold gap-1; }
+  .badge-indigo { @apply badge bg-indigo-50 text-indigo-700 border border-indigo-200; }
+  .badge-violet { @apply badge bg-violet-50 text-violet-700 border border-violet-200; }
+  .badge-green  { @apply badge bg-emerald-50 text-emerald-700 border border-emerald-200; }
+  .badge-red    { @apply badge bg-rose-50 text-rose-700 border border-rose-200; }
+  .badge-amber  { @apply badge bg-amber-50 text-amber-700 border border-amber-200; }
+  .badge-gray   { @apply badge bg-slate-50 text-slate-600 border border-slate-200; }
+  .badge-cyan   { @apply badge bg-cyan-50 text-cyan-700 border border-cyan-200; }
+
+  /* ── Sidebar ─────────────────────────────── */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
+           text-white/60 hover:text-white hover:bg-white/10
+           transition-all duration-200 cursor-pointer;
+  }
+  .sidebar-link-active {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold
+           text-white bg-white/15 border border-white/20 shadow-glow;
+  }
+
+  /* ── Page ────────────────────────────────── */
+  .page-header   { @apply mb-6; }
+  .page-title    { @apply text-2xl font-bold text-slate-900; }
+  .page-subtitle { @apply text-sm text-slate-500 mt-1; }
+
+  /* ── Table ───────────────────────────────── */
+  .table-wrapper { @apply overflow-x-auto rounded-2xl border border-indigo-50; }
+  .table         { @apply w-full text-sm; }
+  .table thead   { @apply bg-indigo-50/60; }
+  .table thead th{ @apply px-5 py-3 text-left text-xs font-semibold text-indigo-400 uppercase tracking-wider; }
+  .table tbody tr{ @apply border-t border-indigo-50/80 hover:bg-indigo-50/40 transition-colors duration-100; }
+  .table tbody td{ @apply px-5 py-3.5 text-slate-700; }
+
+  /* ── Alert banner ────────────────────────── */
+  .alert-banner {
+    @apply flex items-center gap-3 p-4 rounded-2xl border font-medium text-sm;
+  }
+  .alert-danger  { @apply alert-banner bg-rose-50 border-rose-200 text-rose-800; }
+  .alert-warning { @apply alert-banner bg-amber-50 border-amber-200 text-amber-800; }
+  .alert-success { @apply alert-banner bg-emerald-50 border-emerald-200 text-emerald-800; }
+
+  /* ── Stat card ───────────────────────────── */
+  .stat-card {
+    @apply card p-5 flex items-center justify-between;
+  }
+
+  /* ── Live dot ────────────────────────────── */
+  .live-dot {
+    @apply w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot;
+    box-shadow: 0 0 6px rgba(52,211,153,.7);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar        { width:5px; height:5px; }
+::-webkit-scrollbar-track  { background:transparent; }
+::-webkit-scrollbar-thumb  { background:#c7d2fe; border-radius:4px; }
+::-webkit-scrollbar-thumb:hover { background:#818cf8; }
+
+/* Toast */
+@keyframes toastIn  { from{opacity:0;transform:translateY(-10px) scale(.95)} to{opacity:1;transform:translateY(0) scale(1)} }
+@keyframes toastOut { from{opacity:1;transform:translateY(0) scale(1)}        to{opacity:0;transform:translateY(-10px) scale(.95)} }
+.toast-enter { animation:toastIn  .3s ease-out; }
+.toast-exit  { animation:toastOut .2s ease-in forwards; }
+
+/* Sidebar dot pattern overlay */
+.sidebar-dots {
+  background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
